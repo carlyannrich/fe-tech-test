@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import device from '../../assets/device';
 
 const StyledTitle = styled.div`
 .content-section {
@@ -21,10 +22,21 @@ const StyledTitle = styled.div`
 }
 h1 {
   font-family: 'Roboto';
-  font-size: 50px;
+  font-size: 30px;
   line-height: 1;
   text-align: center;
-  color: #000;
+  color: #fff;
+  font-weight: 500;
+  margin: 25% 0 5% 0;
+
+    @media ${device.tablet} {
+      font-size: 40px;
+        margin: 25% 0 5% 0;
+    }
+    @media ${device.laptop} {
+      font-size: 50px;
+        margin: 8% 0 2% 0;
+    }
 }
 `;
 

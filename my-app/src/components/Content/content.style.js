@@ -1,10 +1,19 @@
 import styled from 'styled-components';
 
+import device from '../../assets/device';
+
 
 const StyledContent = styled.div`
 .content-section {
   margin: 0 auto;
-  width: 70%;
+  width: 98%;
+
+      @media ${device.tablet} {
+      width: 90%;
+    }
+    @media ${device.laptop} {
+      width: 70%;
+    }
 }
 .grid-container {
   display: grid;
@@ -18,16 +27,34 @@ const StyledContent = styled.div`
   grid-area: content;
   display: flex;
   justify-content: center;
-  margin: 0% 16% 0% 16%;
+  margin: 0% 5% 0% 5%;
+
+    @media ${device.tablet} {
+      margin: 0% 10% 0% 10%;
+    }
+    @media ${device.laptop} {
+      margin: 0% 16% 0% 16%;
+    }
 }
 h2 {
   font-family: 'Roboto';
   font-weight: 400;
-  font-size: 25px;
-  line-height: 1;
+  font-size: 20px;
+  line-height: 1.3;
   text-align: center;
-  color: #000;
-  margin: 1% 0% 1% 0%;
+  color: #fff;
+  margin: 3% 0% 3% 0%;
+
+    @media ${device.tablet} {
+      font-size: 20px;
+        line-height: 1.3;
+          margin: 3% 0% 3% 0%;
+    }
+    @media ${device.laptop} {
+      font-size: 25px;
+        line-height: 1;
+          margin: 1% 0% 1% 0%;
+    }
 }
 `;
 
