@@ -48,17 +48,17 @@ const App = () => {
   };
   return (
     <div className="App">
-      <div className="content">
+      <div className="content grid-container">
         <Title title={title}/>
         {pageContent?.content?.map((content) => (
           <Content key={content?.id} {...content} />
           ))}
         <SearchInput/>
         {cardContent1?.content?.map((content) => (
-        <Card key={content?.id} {...content} />
+          <Card className="Card-1" key={content?.id} {...content} />
         ))}
         {cardContent2?.content?.map((content) => (
-          <Card key={content?.id} {...content} />
+          <Card className="Card-2" key={content?.id} {...content} />
         ))}
       </div>
     </div>

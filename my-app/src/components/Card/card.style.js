@@ -4,7 +4,7 @@ import device from '../../assets/device';
 
 
 const StyledCard = styled.div`
-.content-section {
+.cardcontent-section {
   margin: 0 auto;
   width: 87%;
 
@@ -12,7 +12,7 @@ const StyledCard = styled.div`
       width: 87%;
     }
     @media ${device.laptop} {
-      width: 40%;
+      width: 30%;
     }
 }
 
@@ -20,9 +20,9 @@ const StyledCard = styled.div`
   border: 1px solid #BEBEBE;
   background: #fff;
   border-radius: 10px;
-  margin: 10% 0 0 0;
+  margin: 10% 0 10% 0;
   width: 100%;
-  height: 250px;
+  height: 240px;
 
     @media ${device.tablet} {
         width: 100%;
@@ -31,14 +31,14 @@ const StyledCard = styled.div`
     }
     @media ${device.laptop} {
         width: 100%;
-        height: 200px;
+        height: 180px;
 
     }
 }
 h3 {
-  margin: 2% 2% 1% 2%;
+  margin: unset;
   font-weight: unset;
-  letter-spacing: 0.03em;
+
 }
 
 ul {
@@ -53,19 +53,22 @@ ul {
   font-weight: 500;
   line-height: 1.3;
   text-align: left;
+  letter-spacing: 0.03em;
   color: #000;
-  padding: 2% 2% 0 2%;
+  padding: 4% 5% 0 5%;
 
 
     @media ${device.tablet} {
       font-size: 10px;
       font-weight: 200;
       line-height: 1.3;
+      padding: 2% 3% 0 3%;
     }
     @media ${device.laptop} {
-      font-size: 10px;
-      font-weight: 100px;
+      font-size: 12px;
+      font-weight: 500;
       line-height: 1;
+      padding: 5% 5% 0 5%;
     }
 }
 
@@ -76,15 +79,16 @@ width: 100%
   font-size: 18px;
   line-height: 1.3;
   text-align: left;
+  letter-spacing: 0.03em;
   color: #8400B7;
-  padding: 1% 2% 0 2%;
+  padding: 3% 5% 0 5%;
 
     @media ${device.tablet} {
       font-size: 20px;
         line-height: 1.3;
     }
     @media ${device.laptop} {
-      font-size: 25px;
+      font-size: 20px;
         line-height: 1;
     }
 }
@@ -93,11 +97,12 @@ width: 100%
 width: 100%
   font-family: 'Roboto';
   font-weight: 350;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.3;
   text-align: left;
+  letter-spacing: 0.03em;
   color: #000;
-  padding: 1% 2% 0 2%;
+  padding: 3% 5% 0 5%;
 
     @media ${device.tablet} {
       font-size: 12px;
@@ -106,26 +111,30 @@ width: 100%
     @media ${device.laptop} {
       font-size: 15px;
       line-height: 1;
+      padding: 4% 5% 0 5%;
     }
 }
 
 .valuesContent {
 width: 100%
   font-family: 'Roboto';
-  font-weight: 500;
-  font-size: 18px;
+  font-weight: 450;
+  font-size: 17px;
   line-height: 1.3;
   text-align: left;
+  letter-spacing: 0.02em;
   color: #000;
-  padding: 2% 2% 2% 2%;
+  padding: 3% 5% 0 5%;
 
     @media ${device.tablet} {
       font-size: 20px;
-        line-height: 1.3;
+      line-height: 1.3;
     }
     @media ${device.laptop} {
-      font-size: 25px;
-        line-height: 1;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1;
+      padding: 4% 5% 0 5%;
     }
 }
 `;

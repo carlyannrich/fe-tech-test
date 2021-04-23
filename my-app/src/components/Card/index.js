@@ -7,8 +7,11 @@ import CloseButton from '../CloseButton/index';
 
 const Card = ({ timeContent = 'Updated an hour ago', placeContent = 'test content', regionContent = 'test content', valuesContent = 'test content', }) => (
     <StyledCard>
-        <section className="content-section">
+        <section className="cardcontent-section">
             <div className="card">
+                <div>
+                    <CloseButton />
+                </div>
                 <ul>
                     <li className="timeContent">
                     <CardContent content={timeContent} />
@@ -23,9 +26,6 @@ const Card = ({ timeContent = 'Updated an hour ago', placeContent = 'test conten
                     <CardContent  content={valuesContent} />
                     </li>
                 </ul>
-                <div>
-                    <CloseButton/>
-                </div>
             </div>
         </section>
     </StyledCard>

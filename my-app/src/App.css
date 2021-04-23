@@ -2,3 +2,25 @@ body {
   background-color: #923cbd;
   background-image: linear-gradient(280deg, #5d80be, #923cbd);
 }
+
+.grid-container {
+  @media only screen and (min-width: 1024px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas: "Card-1 Card-1 Card-2 Card-2" ". . . ." ". . . .";
+  }
+}
+
+.Card-1 {
+  @media only screen and (min-width: 1024px) {
+    grid-area: Card-1;
+  }
+}
+
+.Card-2 {
+  @media only screen and (min-width: 1024px) {
+    grid-area: Card-2;
+  }
+}
