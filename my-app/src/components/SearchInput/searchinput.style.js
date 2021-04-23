@@ -1,10 +1,20 @@
 import styled from 'styled-components';
 
+import device from '../../assets/device';
+
 
 const StyledSearchInput = styled.div`
 .content-section {
   margin: 0 auto;
-  width: 70%;
+  width: 95%;
+
+      @media ${device.tablet} {
+        width: 95%;
+    }
+    @media ${device.laptop} {
+        width: 70%;
+    }
+
 }
 .grid-container {
   display: grid;
@@ -18,15 +28,32 @@ const StyledSearchInput = styled.div`
   grid-area: content;
   display: flex;
   justify-content: center;
+  margin: 0% 5% 0% 5%;
+
+    @media ${device.tablet} {
   margin: 0% 16% 0% 16%;
+    }
+    @media ${device.laptop} {
+  margin: 0% 16% 0% 16%;
+    }
 }
 
 #searchArea {
-    border: 1px solid #000;;
+    border: 1px solid #BEBEBE;
     border-radius: 10px;
-    margin: 5% 0% 1% 0%;
-    width: 55%;
+    margin: 10% 0% 10% 0%;
+    width: 100%;
     text-align: center;
+    background-color: white;
+
+    @media ${device.tablet} {
+        margin: 10% 0% 5% 0%;
+        width: 55%;
+    }
+    @media ${device.laptop} {
+        margin: 5% 0% 1% 0%;
+        width: 55%;
+    }
 }
 
 input {
@@ -36,14 +63,17 @@ input {
     line-height: 2;
     color: #000;
     text-align: left;
-    border-width:0px;
-    border:none;
+    border-width: 0px;
+    border: none;
+    box-shadow: none;
+    outline: none;
     width: 80%;
     margin: auto 3%;
 
     &:focus {
-        border-width:0px;
+        border-width: 0px;
         border: none;
+        outline: none;
   }
 }
 
