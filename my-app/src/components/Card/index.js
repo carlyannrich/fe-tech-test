@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import StyledCard from './card.style';
 import Button from '../Button';
 
-const Card = ({ timeContent = 'Updated an hour ago', placeContent = 'test content', regionContent = 'test content', valuesContent = 'test content', }) => (
+const Card = ({ timeContent = 'Updated an hour ago', placeContent = 'test content', regionContent = 'test content', valuesContent = 'test content', onClickHandle = () => {} }) => {
+   
+    return (
     <StyledCard>
         <section className="cardcontent-section">
             <div className="card">
                 <div>
-                    <Button />
+                    <Button onClickHandle={onClickHandle} />
                 </div>
                 <ul>
                     <li className="timeContent">
@@ -36,7 +38,7 @@ const Card = ({ timeContent = 'Updated an hour ago', placeContent = 'test conten
             </div>
         </section>
     </StyledCard>
-);
+)};
 
 Card.propTypes = {
     timeContent: PropTypes.string.isRequired,

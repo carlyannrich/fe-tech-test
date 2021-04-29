@@ -2,16 +2,12 @@ import React from 'react';
 
 import StyledButton from './button.style';
 
-const Button = () => {
+
+const Button = ({ onClickHandle = () => {}}) => {
     return (
     <StyledButton>
         <div className="button-section">
-                <button type="button" aria-label="Close" className="button" aria-hidden="true" 
-                
-                onClick={e => {
-                    this.onClick(e);
-                }}
-          >✕</button>
+            <button type="button" aria-label="Close" className="button" aria-hidden="true" onClick={() => onClickHandle()}>✕</button>
         </div>
     </StyledButton>
 )};

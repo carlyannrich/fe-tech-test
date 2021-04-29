@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 
 import Card from '../Card';
 import StyledCardListing from './cardlisting.style';
 
-const CardListing = ({ data }) => {
+const CardListing = ({ data = [] }) => {
+    const [results, setResults] = useState(data);
+
+    const removeResult = ({id}) => {
+        const filterResults = results.filter((result) => result.id !== id);
+
+        setResults(filterResults);
+    }
 
     return (
         <StyledCardListing>
         <div className="card-listing">
             {
-                data?.map((card, index) => <Card key={card?.id} {...card} />)
+                results?.map((card, index) => <Card key={card?.id} {...card} onClickHandle={() => removeResult({id: card?.id})} />)
             }
         </div>
         </StyledCardListing>
