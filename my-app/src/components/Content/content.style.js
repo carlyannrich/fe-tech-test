@@ -6,26 +6,35 @@ import device from '../../assets/device';
 const StyledContent = styled.div`
 .content-section {
   margin: 0 auto;
-  width: 98%;
+  width: 70%;
+}
 
-      @media ${device.tablet} {
-      width: 90%;
+.title {
+  display: flex;
+  justify-content: center;
+  margin: 0%;
+}
+
+h1 {
+  font-family: 'Roboto';
+  font-size: 30px;
+  line-height: 1;
+  text-align: center;
+  color: #fff;
+  font-weight: 500;
+  margin: 25% 0 5% 0;
+
+    @media ${device.tablet} {
+      font-size: 40px;
+        margin: 25% 0 5% 0;
     }
     @media ${device.laptop} {
-      width: 70%;
+      font-size: 50px;
+        margin: 8% 0 2% 0;
     }
-}
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 0px 0px;
-  grid-template-areas: "content content content content" ". button button ." ". . . .";
 }
 
 .content {
-  grid-area: content;
-  display: flex;
   justify-content: center;
   margin: 0% 5% 0% 5%;
 
@@ -36,6 +45,7 @@ const StyledContent = styled.div`
       margin: 0% 16% 0% 16%;
     }
 }
+
 h2 {
   font-family: 'Roboto';
   font-weight: 400;

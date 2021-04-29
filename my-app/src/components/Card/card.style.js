@@ -12,7 +12,7 @@ const StyledCard = styled.div`
       width: 87%;
     }
     @media ${device.laptop} {
-      width: 30%;
+      width: 100%;
     }
 }
 
@@ -35,9 +35,43 @@ const StyledCard = styled.div`
 
     }
 }
+
+button {
+    float: right;
+    padding: 5%;
+      @media ${device.tablet} {
+        padding: 5%;
+      }
+      @media ${device.laptop} {
+        padding: 4%;
+      }
+}
+
+.button-section {
+  align-items: flex;
+  text-align: right;
+}
+
+.button {
+  cursor: pointer;
+  font-size: 30px;
+  font-family: 'Arial';
+  font-weight: 500;
+  line-height: 1.2;
+
+    @media ${device.tablet} {
+
+    }
+    @media ${device.laptop} {
+
+
+    }
+}
+
 h3 {
   margin: unset;
   font-weight: unset;
+  font-family: 'Roboto';
 
 }
 

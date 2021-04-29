@@ -3,28 +3,13 @@ import styled from 'styled-components';
 import device from '../../assets/device';
 
 const StyledCardListing = styled.div`
-.grid - container {
+.card-listing {
     @media ${ device.laptop } {
+        height: 100%; 
+        margin: 0 20% 0 20%;
         display: grid;
-        grid - template - columns: 1fr 1fr 1fr 1fr;
-        grid - template - rows: 1fr 1fr 1fr;
-        gap: 0px 0px;
-        grid - template - areas:
-        "Card-1 Card-1 Card-2 Card-2"
-        ". . . ."
-        ". . . .";
-    }
-}
-
-.Card - 1 {
-    @media ${ device.laptop } {
-        grid - area: Card - 1;
-    }
-}
-
-.Card - 2 {
-    @media ${ device.laptop } {
-        grid - area: Card - 2;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 40px;
     }
 }
 `;
