@@ -1,12 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import './App.css';
 import Content from './components/Content/index';
 import SearchInput from './components/SearchInput/index';
 import CardListing from './components/CardListing';
-
-
 
 const App = () => {
   const title = 'Compare your Air';
@@ -42,16 +40,52 @@ const App = () => {
       },
     ],
   };
+
+  const [input, setInput] = useState('');
+  const [countryListDefault, setCountryListDefault] = useState();
+  const [countryList, setCountryList] = useState();
+
+  // fetching UK cities data from OpenAQ API
+  const fetchData = async () => {
+    return await fetch('https://restcountries.eu/rest/v2/all')
+      .then(response => response.json())
+      .then(data => {
+        setCountryList(data)
+        setCountryListDefault(data)
+      });
+  }
+
+  const updateInput = async (input) => {
+    const filtered = countryListDefault.filter(country => {
+      return country.name.toLowerCase().includes(input.toLowerCase())
+    })
+    setInput(input);
+    setCountryList(filtered);
+  }
+
+  useEffect(() => { fetchData() }, []);
+
   return (
     <div className="App">
       <div className="content grid-container">
-        <Content title={title}/>
-        {pageContent?.content?.map((content) => (
-          <Content key={content?.id} {...content} />
-          ))}
-        <SearchInput/>
 
-        <CardListing data={data?.results} />
+        <Content 
+        title={title}
+        />
+
+        {pageContent?.content?.map((content) => (
+          <Content 
+          key={content?.id} {...content} />
+          ))}
+
+        <SearchInput
+        input={input}
+        onChange={updateInput}
+        countryList={countryList}
+        />
+
+        <CardListing 
+        data={data?.results} />
 
       </div>
     </div>

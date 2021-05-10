@@ -83,6 +83,16 @@ img {
     margin-top: 3%;
 }
 
+.locationChoices {
+  position: absolute;
+  cursor: pointer;
+  
+}
+
+input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
 `;
 
 export default StyledSearchInput;
