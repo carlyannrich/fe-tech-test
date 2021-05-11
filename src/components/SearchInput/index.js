@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState}  from 'react';
 import PropTypes from 'prop-types';
 
 import StyledSearchInput from './searchinput.style';
 import imagesrc from '../../assets/searchicon.svg';
 
-const SearchInput = ({ placeholder = 'Enter city name...', input: location, onChange: setLocation, countryList = [] }) => {
-    console.log({countryList});
+const SearchInput = ({ placeholder = 'Enter city name...', onChange: setLocation, cityList = [] }) => {
+    const [location, setInput] = useState('');
+    const updateInput = event => {
+        setInput(event.target.value);
+    };
     return (
     <StyledSearchInput>
         <section className="content-section">
@@ -18,10 +21,10 @@ const SearchInput = ({ placeholder = 'Enter city name...', input: location, onCh
                     aria-label="Search a city" 
                     placeholder={placeholder}
                     value={location}
-                    onChange={(e) => setLocation(e.target.value)}
+                    onChange={updateInput}
                     />
                     <datalist id="locationChoices">
-                        {countryList.map((data, index) => (
+                        {cityList?.map((data, index) => (
                             <option value={data?.name} />
                         ))}     
                     </datalist>

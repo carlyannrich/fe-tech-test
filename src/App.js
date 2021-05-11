@@ -21,7 +21,7 @@ const App = () => {
       },
     ],
   };
-  const data = {
+  const cardData = {
     results: [
 
       {
@@ -41,26 +41,27 @@ const App = () => {
     ],
   };
 
-  const [input, setInput] = useState('');
-  const [countryListDefault, setCountryListDefault] = useState();
-  const [countryList, setCountryList] = useState();
+  const [location, setInput] = useState('');
+  const [cityListDefault, setCityListDefault] = useState([]);
+  const [cityList, setCityList] = useState([]);
 
   // fetching UK cities data from OpenAQ API
   const fetchData = async () => {
-    return await fetch('https://restcountries.eu/rest/v2/all')
+    return await fetch('https://docs.openaq.org/v2/locations?limit=100&page=1&offset=0&sort=desc&radius=1000&country_id=gb&order_by=lastUpdated&dumpRaw=false')
       .then(response => response.json())
       .then(data => {
-        setCountryList(data)
-        setCountryListDefault(data)
+        setCityList(data?.results)
+        setCityListDefault(data?.results)
       });
   }
 
-  const updateInput = async (input) => {
-    const filtered = countryListDefault.filter(country => {
-      return country.name.toLowerCase().includes(input.toLowerCase())
-    })
-    setInput(input);
-    setCountryList(filtered);
+  const updateInput = event => {
+    setInput(event.target.value);
+    const filtered = cityListDefault.filter(city => 
+    city.toLowerCase().includes(location)
+    );
+    setInput(location);
+    setCityList(filtered);
   }
 
   useEffect(() => { fetchData() }, []);
@@ -79,13 +80,14 @@ const App = () => {
           ))}
 
         <SearchInput
-        input={input}
+        input={location}
         onChange={updateInput}
-        countryList={countryList}
+        cityList={cityList}
+        value={location}
         />
 
         <CardListing 
-        data={data?.results} />
+        data={cardData?.results} />
 
       </div>
     </div>
