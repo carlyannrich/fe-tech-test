@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import StyledCard from './card.style';
 import Button from '../Button';
 
-const Card = ({ timeContent = 'Updated an hour ago', placeContent = 'test content', regionContent = 'test content', valuesContent = 'test content', onClickHandle = () => { } }) => {
+const Card = ({ timeContent = 'Updated an hour ago', location = 'test content', city = 'test content', valuesContent = 'test content', onClickHandle = () => { } }) => {
 
     return (
         <StyledCard>
@@ -21,12 +21,12 @@ const Card = ({ timeContent = 'Updated an hour ago', placeContent = 'test conten
                         </li>
                         <li className="placeContent">
                             <div className="content">
-                                {<h3>{placeContent}</h3>}
+                                {<h3>{location}</h3>}
                             </div>
                         </li>
                         <li className="regionContent">
                             <div className="content">
-                                {<h3>{regionContent}</h3>}
+                                {<h3>{city}</h3>}
                             </div>
                         </li>
                         <li className="valuesContent">

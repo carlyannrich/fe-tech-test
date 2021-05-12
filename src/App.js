@@ -55,19 +55,21 @@ const App = () => {
         setCityListDefault(data?.results)
       });
   }
+
   useEffect(() => { fetchData() }, []);
   console.log({ cityList });
 
   // fetching UK card data (last updated, location, city name and country, values) from OpenAQ API
   const fetchFullData = async (location) => {
-    return await fetch(`https://u50g7n0cbj.execute-api.us-east-1.amazonaws.com/v2/latest?limit=100&page=1&offset=0&sort=desc&radius=1000&country_id=gb&city=[${location}]&order_by=lastUpdated&dumpRaw=false`)
+    if (!location) return;
+    return await fetch(`https://u50g7n0cbj.execute-api.us-east-1.amazonaws.com/v2/latest?limit=100&page=1&offset=0&sort=desc&radius=1000&country_id=gb&city=${location}&order_by=lastUpdated&dumpRaw=false`)
       .then(response => response.json())
       .then(data => {
+
         setDataList(data?.results)
       });
   }
-  useEffect(() => { fetchFullData() }, []);
-  console.log({dataList})
+
   
   // filtering and updating cities in input field
   const updateInput = event => {
@@ -81,9 +83,12 @@ const App = () => {
 
   const handleClick = (location) => {
     if (location) {
-      fetchFullData()
+      fetchFullData(location);
     }
   }
+
+
+  console.log({ dataList });
 
   return (
     <div className="App">
@@ -106,8 +111,7 @@ const App = () => {
         dataList={dataList}
         />
 
-        <CardListing 
-        data={cardData?.results} />
+        <CardListing data={dataList} />
 
       </div>
     </div>
