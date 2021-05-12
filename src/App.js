@@ -39,32 +39,51 @@ const App = () => {
         valuesContent: 'Values: PM25: 9, SO2: 32, O3: 8, NO2: 43',
       },
     ],
-  };
-
+  };  
+  // setting state
   const [location, setInput] = useState('');
   const [cityListDefault, setCityListDefault] = useState([]);
   const [cityList, setCityList] = useState([]);
+  const [dataList, setDataList] = useState([]);
 
   // fetching UK cities data from OpenAQ API
   const fetchData = async () => {
-    return await fetch('https://docs.openaq.org/v2/locations?limit=100&page=1&offset=0&sort=desc&radius=1000&country_id=gb&order_by=lastUpdated&dumpRaw=false')
+    return await fetch('https://u50g7n0cbj.execute-api.us-east-1.amazonaws.com/v2/cities?limit=112&page=1&offset=0&sort=asc&country_id=gb&order_by=city')
       .then(response => response.json())
       .then(data => {
         setCityList(data?.results)
         setCityListDefault(data?.results)
       });
   }
+  useEffect(() => { fetchData() }, []);
+  console.log({ cityList });
 
+  // fetching UK card data (last updated, location, city name and country, values) from OpenAQ API
+  const fetchFullData = async (location) => {
+    return await fetch(`https://u50g7n0cbj.execute-api.us-east-1.amazonaws.com/v2/latest?limit=100&page=1&offset=0&sort=desc&radius=1000&country_id=gb&city=[${location}]&order_by=lastUpdated&dumpRaw=false`)
+      .then(response => response.json())
+      .then(data => {
+        setDataList(data?.results)
+      });
+  }
+  useEffect(() => { fetchFullData() }, []);
+  console.log({dataList})
+  
+  // filtering and updating cities in input field
   const updateInput = event => {
     setInput(event.target.value);
     const filtered = cityListDefault.filter(city => 
-    city.toLowerCase().includes(location)
+    city?.toLowerCase().includes(location)
     );
     setInput(location);
     setCityList(filtered);
   }
 
-  useEffect(() => { fetchData() }, []);
+  const handleClick = (location) => {
+    if (location) {
+      fetchFullData()
+    }
+  }
 
   return (
     <div className="App">
@@ -80,10 +99,11 @@ const App = () => {
           ))}
 
         <SearchInput
-        input={location}
         onChange={updateInput}
         cityList={cityList}
         value={location}
+        onClick={handleClick}
+        dataList={dataList}
         />
 
         <CardListing 

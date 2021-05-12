@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import StyledSearchInput from './searchinput.style';
 import imagesrc from '../../assets/searchicon.svg';
 
-const SearchInput = ({ placeholder = 'Enter city name...', onChange: setLocation, cityList = [] }) => {
+const SearchInput = ({ placeholder = 'Enter city name...', cityList = [] }) => {
     const [location, setInput] = useState('');
-    const updateInput = event => {
-        setInput(event.target.value);
-    };
+    const handleClick = ({value}) => {
+        console.log({location})
+    }
+
     return (
     <StyledSearchInput>
         <section className="content-section">
@@ -21,11 +22,12 @@ const SearchInput = ({ placeholder = 'Enter city name...', onChange: setLocation
                     aria-label="Search a city" 
                     placeholder={placeholder}
                     value={location}
-                    onChange={updateInput}
+                    onChange={event => setInput(event.target.value)}
+                    onClick={handleClick}
                     />
-                    <datalist id="locationChoices">
+                        <datalist id="locationChoices">
                         {cityList?.map((data, index) => (
-                            <option value={data?.name} />
+                            <option value={data?.city} />
                         ))}     
                     </datalist>
             </div>
