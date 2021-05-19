@@ -7,12 +7,14 @@ import StyledCardListing from './cardlisting.style';
 const CardListing = ({ data = [] }) => {
     const [results, setResults] = useState(data);
 
+    // useEffect(() => { fetchData(data) }, []);
+
     console.log('CardListing', data);
 
     const removeResult = ({id}) => {
         const filterResults = results.filter((result) => result.id !== id);
         setResults(filterResults);
-    }
+    };
 
     return (
         <StyledCardListing>
@@ -23,7 +25,7 @@ const CardListing = ({ data = [] }) => {
         </div>
         </StyledCardListing>
     )
-}
+};
 
 CardListing.propTypes = {
     title: PropTypes.string.isRequired,

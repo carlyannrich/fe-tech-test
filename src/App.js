@@ -2,44 +2,43 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import './App.css';
-import Content from './components/Content/index';
-import SearchInput from './components/SearchInput/index';
+import Content from './components/Content';
+import SearchInput from './components/SearchInput';
 import CardListing from './components/CardListing';
 
 const App = () => {
-  const title = 'Compare your Air';
-  const pageContent = {
-    content: [
-      {
-        id: 1,
-        content: "Compare the air quality between cities in the UK.",
-      },
-      {
-        id: 2,
-        content: 'Select cities to compare using the search tool below.',
 
-      },
-    ],
-  };
-  const cardData = {
-    results: [
+  // const cardData = {
+  //   results: [
 
-      {
-        id: 1,
-        timeContent: "Updated an hour ago".toUpperCase(),
-        placeContent: 'Manchester Piccadilly',
-        regionContent: 'in Manchester, United Kingdom',
-        valuesContent: 'Values: PM25: 9, SO2: 32, O3: 8, NO2: 43',
-      },
-      {
+  //     {
+  //       id: 1,
+  //       timeContent: "Updated an hour ago".toUpperCase(),
+  //       placeContent: 'Manchester Piccadilly',
+  //       regionContent: 'in Manchester, United Kingdom',
+  //       valuesContent: 'Values: PM25: 9, SO2: 32, O3: 8, NO2: 43',
+  //     },
+  //     {
+  //       id: 2,
+  //       timeContent: "Updated 6 weeks ago".toUpperCase(),
+  //       placeContent: 'Milton Keynes',
+  //       regionContent: 'in Milton Keynes, United Kingdom',
+  //       valuesContent: 'Values: PM25: 9, SO2: 32, O3: 8, NO2: 43',
+  //     },
+  //   ],
+  // };  
+
+
+/*
+  const cardData = 
         id: 2,
-        timeContent: "Updated 6 weeks ago".toUpperCase(),
-        placeContent: 'Milton Keynes',
-        regionContent: 'in Milton Keynes, United Kingdom',
-        valuesContent: 'Values: PM25: 9, SO2: 32, O3: 8, NO2: 43',
-      },
-    ],
-  };  
+    timeContent: {dataList[0].measurements[0].lastUpdated}.toUpperCase(), -"2021-05-17T07:00:00+00:00"
+        placeContent: {dataList[0].location}, -Aston Hill
+        regionContent: 'in' {dataList[0].city}, {dataList[0].country} -Aston Hill -GB
+        valuesContent: 'Values:' {dataList[0].measurements[1].parameter}':' {dataList[0].measurements[0].value}','
+*/
+
+
   // setting state
   const [location, setInput] = useState('');
   const [cityListDefault, setCityListDefault] = useState([]);
@@ -81,12 +80,29 @@ const App = () => {
     setCityList(filtered);
   }
 
+  // handling click to display a card with appropriate data
   const handleClick = (location) => {
     if (location) {
       fetchFullData(location);
     }
-  }
+  };
 
+  // title
+  const title = 'Compare your Air';
+  // content
+  const pageContent = {
+    content: [
+      {
+        id: 1,
+        content: "Compare the air quality between cities in the UK.",
+      },
+      {
+        id: 2,
+        content: 'Select cities to compare using the search tool below.',
+
+      },
+    ],
+  };
 
   console.log({ dataList });
 
@@ -108,7 +124,6 @@ const App = () => {
         cityList={cityList}
         value={location}
         onClick={handleClick}
-        dataList={dataList}
         />
 
         <CardListing data={dataList} />

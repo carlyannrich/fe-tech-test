@@ -6,14 +6,12 @@ import imagesrc from '../../assets/searchicon.svg';
 
 const SearchInput = ({ placeholder = 'Enter city name...', cityList = [], onClick = () => {} }) => {
     const [location, setInput] = useState('');
-    const handleClick = ({value}) => {
-        console.log({location})
-    }
+
 
     useEffect(() => {
         console.log('useEffect', location);
         onClick(location)
-    }, [location])
+    }, [location]);
 
     return (
     <StyledSearchInput>

@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import StyledCard from './card.style';
 import Button from '../Button';
 
-const Card = ({ timeContent = 'Updated an hour ago', location = 'test content', city = 'test content', valuesContent = 'test content', onClickHandle = () => { } }) => {
-
+// const Card = ({ timeContent = 'Updated an hour ago', location = 'test content', city = 'test content', valuesContent = 'test content', onClickHandle = () => { } }) => {
+const Card = (props) => {
+console.log(props);
+    const { timeContent = 'Updated an hour ago', location = 'test content', city = 'test content', valuesContent = 'test content', onClickHandle = () => { } } = props;
     return (
         <StyledCard>
             <section className="cardcontent-section">
